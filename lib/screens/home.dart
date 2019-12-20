@@ -11,8 +11,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider<ImageDataProvider>(
-            create: (_) => WebUploadFileImageDataProvider())
+        Provider<FileImageDataProvider>(
+            create: (_) => WebUploadFileImageDataProvider()),
+        Provider<NetworkImageDataProvider>(
+            create: (_) => NetworkImageDataProvider())
       ],
       child: Container(
         decoration: BoxDecoration(

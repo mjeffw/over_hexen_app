@@ -7,7 +7,9 @@ import '../../../providers/image_data_provider.dart';
 class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final ImageDataProvider provider = Provider.of<ImageDataProvider>(context);
+    final fileProvider = Provider.of<FileImageDataProvider>(context);
+    final model = Provider.of<ImageData>(context, listen: false);
+
     return Container(
       height: 60,
       decoration: BoxDecoration(
@@ -17,14 +19,11 @@ class Header extends StatelessWidget {
         alignment: MainAxisAlignment.start,
         children: <Widget>[
           RaisedButton(
-            onPressed: () {
-              provider.get((data) =>
-                      Provider.of<ImageData>(context, listen: false).bytes =
-                          data);
-            },
-            child: Text('Load Image'),
+            onPressed: () => fileProvider.get((data) => model.bytes = data),
+            child: Text('Upload Image'),
             color: Colors.amber,
-          )
+          ),
+//          RaisedButton(onPressed: () => urlProvider.get((data)=> Pro),),
         ],
       ),
     );

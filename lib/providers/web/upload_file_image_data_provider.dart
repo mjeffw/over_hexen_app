@@ -2,7 +2,7 @@ import 'package:universal_html/prefer_universal/html.dart';
 
 import '../image_data_provider.dart';
 
-class WebUploadFileImageDataProvider extends ImageDataProvider {
+class WebUploadFileImageDataProvider extends FileImageDataProvider {
   @override
   void get(ImageDataProviderHandler handler) {
     InputElement uploadInput = FileUploadInputElement();
