@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'screens/app.dart';
+import 'over_hexen_app.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(OverHexenApp());

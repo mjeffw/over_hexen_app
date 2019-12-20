@@ -1,32 +1,10 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:universal_html/prefer_universal/html.dart' as html;
 
-import '../model/image_model.dart';
-
-class FileViewer extends StatelessWidget {
-  const FileViewer({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => ImageModel(),
-      child: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Header(),
-            Consumer<ImageModel>(builder: (_, image, __) => Body(image)),
-          ],
-        ),
-      ),
-    );
-  }
-}
+import '../../../model/image_data.dart';
 
 class Header extends StatelessWidget {
   @override
@@ -71,24 +49,6 @@ class Header extends StatelessWidget {
   }
 
   void _handleResult(BuildContext context, Uint8List result) {
-    Provider.of<ImageModel>(context, listen: false).bytes = result;
-  }
-}
-
-class Body extends StatelessWidget {
-  final ImageModel model;
-
-  Body(this.model);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 800,
-      width: 600,
-      color: Colors.blueGrey,
-      child: model.bytes != null
-          ? Image.memory(model.bytes)
-          : Container(color: Colors.transparent),
-    );
+    Provider.of<ImageData>(context, listen: false).bytes = result;
   }
 }
