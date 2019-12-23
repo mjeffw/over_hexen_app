@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-typedef ImageDataProviderHandler = void Function(Uint8List data);
+typedef ImageDataProviderHandler = void Function(Uint8List data, String name);
 
 abstract class ImageDataProvider {
   void get(ImageDataProviderHandler handler);

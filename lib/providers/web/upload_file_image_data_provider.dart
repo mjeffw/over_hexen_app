@@ -13,10 +13,11 @@ class WebUploadFileImageDataProvider extends FileImageDataProvider {
       final files = uploadInput.files;
       if (files.length == 1) {
         final file = files[0];
+        print(file.name);
         final reader = new FileReader();
 
         reader.onLoadEnd.listen((e) {
-          handler(reader.result);
+          handler(reader.result, file.name);
         });
         reader.readAsArrayBuffer(file);
       }

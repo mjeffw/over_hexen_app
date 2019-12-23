@@ -13,7 +13,8 @@ class FileViewer extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Header(),
+            Consumer<ImageData>(
+                builder: (_, image, __) => Header(model: image)),
             Consumer<ImageData>(builder: (_, image, __) => Body(image)),
           ],
         ),
