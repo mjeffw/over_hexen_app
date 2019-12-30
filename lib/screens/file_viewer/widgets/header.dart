@@ -51,7 +51,9 @@ class Header extends StatelessWidget {
                   Text(model.name),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 4.0),
-                    child: UrlForm(),
+                    child: UrlForm(
+                        onSubmit: (data, name) =>
+                            model.updateState(name, data)),
                   ),
                 ],
                 index: model.isEditingURL ? 1 : 0,

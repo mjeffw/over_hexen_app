@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:url/url.dart';
 
+import '../../../providers/image_data_provider.dart';
+
 class UrlForm extends StatefulWidget {
+  final ImageDataProviderHandler onSubmit;
+
+  UrlForm({this.onSubmit});
+
   @override
   State<StatefulWidget> createState() {
     return UrlFormState();
@@ -62,24 +69,37 @@ class UrlFormState extends State<UrlForm> {
     );
   }
 
-  void _submit(BuildContext context) {
+  Future<void> _submit(BuildContext context) async {
     Scaffold.of(context).showSnackBar(SnackBar(
       content: Text('Loading Image...'),
     ));
+
+    // TODO update
+    String text = _controller.text;
+    Uri uri = Uri.parse(text);
+    var response = await http.get(uri);
+    if (response.statusCode == 200) {
+      widget.onSubmit(response.bodyBytes, text);
+    } else {
+      Scaffold.of(context).showSnackBar(SnackBar(
+        content:
+            Text('Error loading image from network: ${response.statusCode}'),
+        backgroundColor: Colors.red,
+      ));
+    }
   }
 
   String validate(value) {
     if (value.isEmpty) return 'Enter an image URL';
-    if (!_isValidImageURL(value)) return 'Enter a valid image URL';
+    if (!_isValidImageURL(value)) return 'Enter a valid URL';
+
     return null;
   }
 
   void _listen() {
-    bool valid = _isValidImageURL(_controller.text);
-
-    if (_validUrl != valid) {
+    if (_validUrl != _isValidImageURL(_controller.text)) {
       setState(() {
-        _validUrl = valid;
+        _validUrl = !_validUrl;
       });
     }
   }
