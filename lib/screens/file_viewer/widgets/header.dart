@@ -6,9 +6,9 @@ import '../../../providers/image_data_provider.dart';
 import 'url_form.dart';
 
 class Header extends StatelessWidget {
-  final ImageData model;
-
   Header({this.model});
+
+  final ImageData model;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class Header extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.black87),
+        border: Border.all(color: Colors.black87)
       ),
       child: Row(
         // alignment: MainAxisAlignment.start,
@@ -36,7 +36,7 @@ class Header extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: RaisedButton(
-              onPressed: () => model.isEditingURL = !model.isEditingURL,
+              onPressed: null, // () => model.isEditingURL = !model.isEditingURL,
               //netProvider.get((data, name) => model.updateState(name, data)),
               child: model.isEditingURL ? Text('Cancel') : Text('Image URL'),
               color: model.isEditingURL ? Colors.amber : Colors.lightGreen,
