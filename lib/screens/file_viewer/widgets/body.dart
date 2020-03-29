@@ -22,13 +22,13 @@ class Body extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: child(),
+          child: image(),
         ),
       ],
     );
   }
 
-  Widget child() => model.bytes != null
+  Widget image() => model.bytes != null
       ? Image.memory(model.bytes)
       : Container(color: Colors.transparent);
 
