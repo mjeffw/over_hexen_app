@@ -10,9 +10,7 @@ class UrlForm extends StatefulWidget {
   UrlForm({this.onSubmit});
 
   @override
-  State<StatefulWidget> createState() {
-    return UrlFormState();
-  }
+  State<StatefulWidget> createState() => UrlFormState();
 }
 
 final Color _invalidColor = Colors.red[800];
