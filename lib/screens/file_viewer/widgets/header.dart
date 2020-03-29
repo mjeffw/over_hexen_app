@@ -15,8 +15,6 @@ class Header extends StatelessWidget {
     final fileProvider = Provider.of<FileImageDataProvider>(context);
     // final netProvider = Provider.of<NetworkImageDataProvider>(context);
 
-    var text = Text(model.name);
-    var urlForm = _urlForm();
     return Container(
       decoration: BoxDecoration(border: Border.all(color: Colors.black87)),
       child: Row(
@@ -24,7 +22,7 @@ class Header extends StatelessWidget {
         children: <Widget>[
           _uploadImageButton(fileProvider),
           _imageUrlButton(),
-          Expanded(child: _createIndexedStack(text, urlForm)),
+          Expanded(child: _createIndexedStack(Text(model.name), _urlForm())),
         ],
       ),
     );
