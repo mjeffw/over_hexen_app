@@ -15,7 +15,7 @@ class FileViewer extends StatelessWidget {
           children: <Widget>[
             Consumer<ImageData>(
                 builder: (_, image, __) => Header(model: image)),
-            Consumer<ImageData>(builder: (_, image, __) => Body(image)),
+            Consumer<ImageData>(builder: (_, image, __) => Body(model: image)),
           ],
         ),
       ),

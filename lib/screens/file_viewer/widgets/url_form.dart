@@ -77,7 +77,8 @@ class UrlFormState extends State<UrlForm> {
     Uri uri = Uri.parse(text);
     var response = await http.get(uri);
     if (response.statusCode == 200) {
-      widget.onSubmit(response.bodyBytes, text);
+      // TODO widget.onSubmit(bytes, text);
+      widget.onSubmit(null, text);
     } else {
       Scaffold.of(context).showSnackBar(SnackBar(
         content:

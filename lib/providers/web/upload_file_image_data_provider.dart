@@ -1,3 +1,4 @@
+import 'package:image/image.dart';
 import 'package:universal_html/prefer_universal/html.dart';
 
 import '../image_data_provider.dart';
@@ -17,7 +18,8 @@ class WebUploadFileImageDataProvider extends FileImageDataProvider {
         final reader = new FileReader();
 
         reader.onLoadEnd.listen((e) {
-          handler(reader.result, file.name);
+          Image image = decodeImage(reader.result);
+          handler(image, file.name);
         });
         reader.readAsArrayBuffer(file);
       }
